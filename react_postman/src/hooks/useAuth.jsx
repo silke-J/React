@@ -36,8 +36,9 @@ const useAuth = () => {
     }
   };
 
- const user = jwtDecode(data.token)
+ const user = jwtDecode(signIn.data.token);
  console.log(user)
+
   return {
     signIn,
     error,

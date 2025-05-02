@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useFetchproduct } from "../../hoods/UseFetchproduct";
+import { useFetchproduct } from "../../hooks/UseFetchproduct";
 import styles from "./cards.module.css";
 import ProductForm from "../forms/ProductFrom";
 import Productcard from "./productcard";

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./ProductFrom.module.css";
-import { useFetchproduct } from "../../hoods/UseFetchproduct";
+import { useFetchproduct } from "../../hooks/UseFetchproduct";
 import { useForm } from "react-hook-form";
 
 const ProductForm = ({ onProductCreated, isEditMode, id }) => {
