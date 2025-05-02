@@ -1,3 +1,4 @@
+import { jwtDecode } from "jwt-decode";
 import { useState } from "react";
 
 const useAuth = () => {
@@ -35,6 +36,8 @@ const useAuth = () => {
     }
   };
 
+ const user = jwtDecode(data.token)
+ console.log(user)
   return {
     signIn,
     error,
