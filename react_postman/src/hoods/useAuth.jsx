@@ -7,8 +7,9 @@ const useAuth = () => {
     const [password, setPassword] = useState("");
 
   //SignIn
-  const signIn = async () => {
-      console.log("jhjdhjsd");
+  const signIn = async (e) => {
+     e.preventDefault();
+
     setIsLoading(true);
     try {
       const response = await fetch("http://localhost:3043/auth/signin", {
@@ -25,6 +26,7 @@ const useAuth = () => {
     
 
       const result = await response.json();
+      console.log(result)
       return result;
     } catch (error) {
       console.log(error);
