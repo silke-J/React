@@ -1,31 +1,31 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
-import  useAuth  from "../../hoods/useAuth";
+import useAuth from "../../hoods/useAuth";
 
 const Login = () => {
+  const { signIn, setEmail, setPassword } = useAuth();
 
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-  const { signIn, setEmail, setPassword } = useAuth()
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
+    const response = await fetch("http://localhost:3042/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
 
-  //   const response = await fetch("http://localhost:3042/login", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ email, password }),
-  //   });
+    const data = await response.json();
 
-  //   const data = await response.json();
-
-  //   if (response.ok) {
-  //     console.log("Login successful", data);
-  //   } else {
-  //     console.error("Login failed", data.message);
-  //     alert(data.message);
-  //   }
-  // };
+    if (response.ok) {
+      console.log("Login successful", data);
+      localStorage.setItem("token", data.token); // gemmer token i localStorage
+    } else {
+      console.error("Login failed", data.message);
+      alert(data.message);
+    }
+  };
 
   return (
     <form className={styles.formContainer2} onSubmit={signIn}>
