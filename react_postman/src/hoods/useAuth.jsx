@@ -3,19 +3,26 @@ import { useState } from "react";
 const useAuth = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
   //SignIn
-  const SignIn = async (signinData) => {
+  const signIn = async () => {
+      console.log("jhjdhjsd");
     setIsLoading(true);
     try {
       const response = await fetch("http://localhost:3043/auth/signin", {
         method: "POST",
+        headers: {
+        "Content-Type": "application/json",
+      },
         body: JSON.stringify({ email, password }),
       });
-
+  console.log(response);
       if (!response.status === "error") {
         throw new Error("Failed to signIn");
       }
+    
 
       const result = await response.json();
       return result;
@@ -27,10 +34,12 @@ const useAuth = () => {
   };
 
   return {
-    SignIn,
+    signIn,
     error,
     isLoading,
+    setEmail,
+    setPassword,
   };
 };
 
-export { useAuth };
+export default useAuth ;
