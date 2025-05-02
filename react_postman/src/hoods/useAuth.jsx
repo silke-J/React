@@ -10,10 +10,7 @@ const useAuth = () => {
     try {
       const response = await fetch("http://localhost:3043/auth/signin", {
         method: "POST",
-        body: {
-          email:{userEmail},
-          password:{userPassword},
-        },
+        body: JSON.stringify({ email, password }),
       });
 
       if (!response.status === "error") {
