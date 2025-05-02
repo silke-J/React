@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
-import  useAuth  from "../../hooks/useAuth";
 import useAuth from "../../hoods/useAuth";
 
 const Login = () => {
