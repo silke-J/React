@@ -1,0 +1,25 @@
+/* .from input{ 
+    display: block;
+    padding: 10px;
+}
+.from label{
+    margin-top: 40px;
+    padding-top:40px;
+
+}
+
+.from{
+    justify-items: center;
+   
+}
+
+ */
+
+ .from {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 20px
+;
+ }

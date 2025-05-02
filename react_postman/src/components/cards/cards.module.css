@@ -1,0 +1,26 @@
+
+.cards{
+    h4{
+        padding-block-start:30px ;
+        font-size: 40px;
+    } 
+
+}
+
+ .card{
+    margin-block: 40px;
+    border: 5px rgb(255, 182, 140) solid;
+    margin-inline: 500px;
+    padding-block:20px ;
+    border-radius: 30px;
+    img{
+        width: 300px;
+        height:300px;
+    }
+}
+
+    .cardButton{
+     
+  gap: 30px;
+      
+    }
