@@ -11,8 +11,8 @@ const useAuth = () => {
       const response = await fetch("http://localhost:3043/auth/signin", {
         method: "POST",
         body: {
-          email: {user.email},
-          password: {user.password},
+          email:{userEmail},
+          password:{userPassword},
         },
       });
 
