@@ -3,31 +3,9 @@ import styles from "./Login.module.css";
 import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
-  const { signIn, setEmail, setPassword } = useAuth();
+  const { signIn, setEmail, setPassword, user, signOut } = useAuth();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    const response = await fetch("http://localhost:3042/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      console.log("Login successful", data);
-      localStorage.setItem("token", data.token); // gemmer token i localStorage
-    } else {
-      console.error("Login failed", data.message);
-      alert(data.message);
-    }
-  };
-
-  return (
+  return !user ? (
     <form className={styles.formContainer2} onSubmit={signIn}>
       <h2>Login</h2>
 
@@ -53,6 +31,15 @@ const Login = () => {
 
       <button type="submit">Log ind</button>
     </form>
+  ) : (
+    <>
+      <p>Du er logged ind</p>
+      <button onClick={signOut}>Log ud</button>
+
+      <img src={user?.image} />
+      <h3>{user?.name}</h3>
+      <h3>{user?.role}</h3>
+    </>
   );
 };
 
