@@ -1,3 +1,4 @@
+import { useLocalStorage } from "@uidotdev/usehooks";
 import { jwtDecode } from "jwt-decode";
 import { useState } from "react";
 
@@ -6,7 +7,8 @@ const useAuth = () => {
   const [isLoading, setIsLoading] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+ const [user, setUser] = useLocalStorage("user",{})
+ const [auth, setAuth] = useLocalStorage("auth",{})
   //SignIn
   const signIn = async (e) => {
      e.preventDefault();
@@ -27,6 +29,9 @@ const useAuth = () => {
     
 
       const result = await response.json();
+      setUser(jwtDecode(result.data.token))
+      console.log(user);
+     setAuth(result.data)
       console.log(result)
       return result;
     } catch (error) {
@@ -36,10 +41,14 @@ const useAuth = () => {
     }
   };
 
- const user = jwtDecode(signIn.data.token);
- console.log(user)
+
+
+
+ 
 
   return {
+    user,
+    auth,
     signIn,
     error,
     isLoading,
