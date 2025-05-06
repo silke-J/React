@@ -1,6 +1,11 @@
-const Footer = () => {
-  
+import logo from "../../../public/logo.png";
+import styles from "./footer.module.css";
 
-  return <footer className="background">COPYRIGHT</footer>;
+const Footer = () => {
+  return (
+    <footer className={styles.footer}>
+      <img src={logo} alt="" />
+    </footer>
+  );
 };
 export default Footer;

@@ -1,0 +1,9 @@
+.footer {
+  background-color: #2a4f57;
+
+  img {
+    width: 10%;
+    height: 10%;
+    object-fit: cover;
+  }
+}
